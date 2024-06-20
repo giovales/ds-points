@@ -19,8 +19,8 @@ WITH tb_rfv AS (
     FROM transactions
 
     -- Only consider transactions before the given date and within the last 21 days
-    WHERE dtTransaction < {date}
-    AND dtTransaction >= DATE({date}, '-21 days')
+    WHERE dtTransaction < '{date}'
+    AND dtTransaction >= DATE('{date}', '-21 days')
 
     -- Group the results by viewer ID
     GROUP BY idCustomer
@@ -50,7 +50,7 @@ tb_age AS (
 -- Select the final result set
 SELECT 
     -- Add the reference date to the result set
-    {date} AS dtRef,
+    '{date}' AS dtRef,
     -- Include all columns from the tb_rfv CTE
     t1.*,
     -- Include the base age in days from the tb_age CTE
